@@ -11,6 +11,20 @@ const indexRouter = require('./routes/index')
 const apiRouter = require('./routes/apiRouter')
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || 3000
+const mongoose = require('mongoose')
+const db = require('./DB')(dev)
+const dbconfig = require('./src/dbconfig')
+console.log(`DB: ${db}`)
+
+// Mongoose configuration
+mongoose.Promise = global.Promise
+mongoose.connect(db, { useNewUrlParser: true, dbName: 'reactcrud' }).then(
+  () => console.log('Database is connected'),
+  err => console.log('Can not connect to the database' + err)
+)
+
+// Resetando a db com os dados originais Json (apenas na primeira conexão com o BD externo...)
+// dbconfig.resetdb()
 
 // Multi-process to utilize all CPU cores.
 if (!dev && cluster.isMaster) {
