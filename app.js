@@ -13,7 +13,7 @@ const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || 3000
 const mongoose = require('mongoose')
 const db = require('./DB')(dev)
-const dbconfig = require('./src/dbconfig')
+// const dbconfig = require('./src/dbconfig')
 console.log(`DB: ${db}`)
 
 // Mongoose configuration
