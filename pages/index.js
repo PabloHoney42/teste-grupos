@@ -3,6 +3,7 @@ import getConfig from 'next/config'
 import axios from 'axios'
 
 import { agruparParticipantes } from '../src/agrupamento'
+import { shuffleArray } from '../src/shuffleArray'
 
 const { publicRuntimeConfig } = getConfig()
 const { API_URL } = publicRuntimeConfig
@@ -24,7 +25,7 @@ const Index = (props) => (
 
       {props.grupos.map((grupo, indice) => {
         return (
-          <table key={indice} class="pure-table pure-table-striped">
+          <table key={indice} className="pure-table pure-table-striped">
             <caption>Grupo {indice + 1} - Quantidade: {grupo.length}</caption>
             <thead>
               <tr>
@@ -37,11 +38,11 @@ const Index = (props) => (
 
             <tbody>
               {grupo.map(participante => (
-                <tr key={participante.id}>
+                <tr key={participante._id}>
                   <td><img src={participante.foto} /></td>
                   <td>{participante.nome}</td>
                   <td>{participante.email}</td>
-                  <td>{participante.id}</td>
+                  <td>{participante._id}</td>
                 </tr>
               ))}
             </tbody>
@@ -53,11 +54,11 @@ const Index = (props) => (
 )
 
 Index.getInitialProps = async () => {
-  const participantes = await axios.get(`${API_URL}/participantes`)
-  const grupos = agruparParticipantes(participantes.data)
+  const res = await axios.get(`${API_URL}/participantes`)
+  const lista = res.data
+  const grupos = agruparParticipantes(shuffleArray(lista)) // "embaralha" os participantes a cada requisição
 
   return {
-    participantes: participantes.data,
     grupos
   }
 }
