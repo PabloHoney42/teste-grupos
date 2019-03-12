@@ -1,4 +1,4 @@
-# teste01
+# Teste-Grupos
 Aplicação React que exibe uma lista de dados mockados do servidor Node
 
 ## Tecnologias utilizadas
