@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon app.js --config nodemon.json",
+    "pre": "node app.js -p $PORT",
     "build": "next build",
     "heroku-postbuild": "next build",
     "start": "node app.js -p $PORT"
