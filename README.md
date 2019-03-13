@@ -8,8 +8,7 @@ Frontend: React.js e set de módulos css [Pure.css](https://purecss.io/)
 Banco de dados: `MongoDB Atlas`
 
 ## Detalhes da API
-Possui apenas o endpoint GET /api/participantes, que retorna uma lista de 117 objetos com os campos Nome, Email e Foto. Esses dados estão
-no arquivo [participantes.json](https://github.com/PabloHoney42/teste01/blob/master/mock/participantes.json) 
+Possui apenas o endpoint GET /api/participantes, que retorna uma lista de 117 objetos com os campos Nome, Email e Foto. A lista de participantes é requisitada pela página ao banco de dados e os objetos são agrupados em 4 grupos de forma aleatória (independentemente da quantidade de registros)
 (Dados gerados no site [json-generator.com](https://www.json-generator.com/))
 
 ## Instruções para instalação *(localmente)*
